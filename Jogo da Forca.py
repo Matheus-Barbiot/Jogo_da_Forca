@@ -5,25 +5,31 @@ def Llist(list):
         print(L, end='')
     print('')
 
-#   INICIO:
+#   INICIO, VARIAVEIS:
 PALAVRA_ = str(input('Digite a palavra da forca: '))
+
 CHANCES_ = 6
-BACKS_ = '_' * len(PALAVRA_)
+ACERTOS_ = int(len(PALAVRA_))
+
 BACKS_n = []
 PALAVRA_n = []
-ACERTOS_ = int(len(PALAVRA_))
-for B_ in BACKS_:
-    BACKS_n.append(B_)
 
-for l in PALAVRA_:
-    PALAVRA_n.append(l)
+
+#   CRIANDO AS LISTAS:
+for L_ in range(0, len(PALAVRA_)):
+    BACKS_n.append('_')
+
+for L_ in PALAVRA_:
+    PALAVRA_n.append(L_)
 
 Llist(BACKS_n)
-while ACERTOS_ != 0:
 
+#   CONDICIONANDO:  1
+while ACERTOS_ != 0:
     CHUTE_ = str(input('Chute uma letra: '))[0]
     Z_ = contlist(PALAVRA_n, CHUTE_)
 
+#       MAIS QUE UMA LETRA NA PALAVRA:
     if CHUTE_ in PALAVRA_n:
         if Z_ > 1:
             for P in range(0, Z_):
@@ -33,12 +39,15 @@ while ACERTOS_ != 0:
             Llist(BACKS_n)
             ACERTOS_ -= Z_
 
+#       APENAS UMA LETRA:
         else:
             POS_ = int(PALAVRA_n.index(CHUTE_))
             BACKS_n[POS_] = PALAVRA_n[POS_]
             PALAVRA_n[POS_] = '-'
             ACERTOS_ -= 1
             Llist(BACKS_n)
+
+#
     else:
         if CHANCES_ > 1:
             CHANCES_ -= 1
@@ -46,4 +55,4 @@ while ACERTOS_ != 0:
         else:
             print('Você Perdeu')
             break
-#   CONDIÇÃO:
+

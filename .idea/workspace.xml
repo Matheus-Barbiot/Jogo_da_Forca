@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01fdcb30-5bd1-44f4-85e2-eb28bbb67610" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Contlist/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jogo da Forca.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jogo da Forca.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +16,16 @@
       <file leaf-file-name="Jogo da Forca.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Jogo da Forca.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+            <state relative-caret-position="379">
+              <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+              <folding>
+                <element signature="e#410#1133#0" />
+                <element signature="e#462#703#0" />
+                <element signature="e#547#761#0" />
+                <element signature="e#537#703#0" />
+                <element signature="e#592#749#0" />
+                <element signature="e#711#749#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -204,8 +210,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Jogo da Forca.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+        <state relative-caret-position="379">
+          <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+          <folding>
+            <element signature="e#410#1133#0" />
+            <element signature="e#462#703#0" />
+            <element signature="e#547#761#0" />
+            <element signature="e#537#703#0" />
+            <element signature="e#592#749#0" />
+            <element signature="e#711#749#0" />
+          </folding>
         </state>
       </provider>
     </entry>
