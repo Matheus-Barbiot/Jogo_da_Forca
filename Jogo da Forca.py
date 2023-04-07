@@ -1,73 +1,114 @@
+#   BIBILIOTÉCAS:
 import random
 from unidecode import unidecode
 
-def Llist(list):
 
-    for L in list:
-        print(L, end='')
-    print('')
-def lin(l='=', n=30):
+#   FUNÇÕES:
+def linha(l='=', n=50): #Cria uma linha para separar
     print(l * n)
-def contlist(list, c):
-    cont = 0
-    for l in list:
-        if l == c:
-            cont += 1
-    return cont
-def contl(list):
-    cont = 0
-    for l in list:
-        cont += 1
-    return cont
+def Format_Letras(): #Formata os _ para as letras e etc
+    POS_ = -1
+    for P in range(0, TAMANHO_):
+        POS_ = int(PALAVRA_LIST_.index(CHUTE_, POS_+1))
+        BACKS_LIST_[POS_] = PALAVRA_LIST_[POS_]
+        PALAVRA_LIST_[POS_] = '-'
+def Chutes(): #Sistema de chute
+    global TAMANHO_, CHUTE_
+    if ACERTOS_ == 1:
+        CHUTE_ = str(input('Chance para chutar a PALAVRA: ')).lower()
+    else:
+        while True:
+            CHUTE_ = str(input('Chute uma letra: ')).lower().strip()[0]
+            if len(CHUTE_) > 0:
+                TAMANHO_ = PALAVRA_LIST_.count(CHUTE_)
+                break
+            else:
+                print('Digite uma letra válida.')
+ 
+
+#   TÍTULO:
+linha()
+print(f'{"JOGO DA FORCA":^50}')
+linha()
 
 
 #   INICIO, VARIAVEIS:
-with open('Palavras.txt', 'r') as A:
-    PALAVRAS_LIST = A.readlines()
-    PALAVRAS_LIST = [L.rstrip('\n') for L in PALAVRAS_LIST]
+try: 
+    with open('Palavras.txt', 'r', encoding='utf-8') as A:
+        PALAVRAS_LIST_ = A.read().splitlines()
 
-PALAVRA_ = random.choice(PALAVRAS_LIST).lower()
-A.close()
+except FileNotFoundError:
+    print('Palavra não encontrada. Tente novamente. . .')
 
+
+PALAVRA_ORIGINAL = random.choice(PALAVRAS_LIST_).lower()
+PALAVRA_ = unidecode(PALAVRA_ORIGINAL)
 CHANCES_ = 6
-ACERTOS_ = int(len(PALAVRA_))
+ACERTOS_ = len(PALAVRA_)
+BACKS_LIST_ = []
+PALAVRA_LIST_ = []
+COND_VITÓRIA_ = False
 
-BACKS_n = []
-PALAVRA_n = []
 
-lin
 #   CRIANDO AS LISTAS:
 for L_ in PALAVRA_:
+    PALAVRA_LIST_.append(L_)
     if L_ != ' ':
-        BACKS_n.append('_')
+        BACKS_LIST_.append('_')
     else:
-        BACKS_n.append(' ')
+        BACKS_LIST_.append(' ')
         ACERTOS_ -= 1
-for L_ in PALAVRA_:
-    PALAVRA_n.append(L_)
-Llist(BACKS_n)
 
 
-#   CONDICIONANDO:
-while ACERTOS_ != 0:
-    CHUTE_ = str(input('Chute uma letra: ')).lower()[0]
-    Z_ = contlist(PALAVRA_n, CHUTE_)
-    lin()
+BACKS_STRING = ' '.join(BACKS_LIST_)
+print(f'{BACKS_STRING:^50}')
+
+
+#   LOOP PRINCIPAL:
+while True:
+    linha('-')
+    Chutes()
+    linha('-')
+
+
+#   TERMINANDO A PALAVRA:
+    if ACERTOS_ == 1:
+        if CHUTE_ == PALAVRA_:
+                COND_VITÓRIA_ = True
+                break
+        else:
+            BACKS_STRING = ' '.join(BACKS_LIST_)
+            print(f'{BACKS_STRING:^50}')
+
+
 #   COLOCANDO AS LETRAS:
-    if CHUTE_ in PALAVRA_n:
-        for P in range(0, Z_):
-            POS_ = int(PALAVRA_n.index(CHUTE_))
-            BACKS_n[POS_] = PALAVRA_n[POS_]
-            PALAVRA_n[POS_] = '-'
-        Llist(BACKS_n)
-        ACERTOS_ -= Z_
-        lin()
+    if CHUTE_ in PALAVRA_LIST_:
+        Format_Letras()
+        ACERTOS_ -= TAMANHO_
+        BACKS_STRING = ' '.join(BACKS_LIST_)
+        print(f'{BACKS_STRING:^50}')
+
+
 #   SE A LETRA ESTIVER ERRADA:
     else:
         if CHANCES_ > 1:
             CHANCES_ -= 1
-            print(f'ERRADO. Chances: {CHANCES_}')
+            linha()
+            print(f'Você errou. Chances restantes: {CHANCES_}')
+            linha()
+            linha('-')
+            BACKS_STRING = ' '.join(BACKS_LIST_)
+            print(f'{BACKS_STRING:^50}')
         else:
-            print(f'Você Perdeu. A palavra era "{unidecode(PALAVRA_)}"')
             break
-print(unidecode(PALAVRA_))
+
+
+#   CONDIÇÃO DE VITÓRIA:
+if COND_VITÓRIA_ != True:
+    linha()
+    print(f'Você perdeu. A palavra era {PALAVRA_ORIGINAL}')
+    linha()
+else:
+    linha()
+    print(f'Parabéns, você acertou. A palavra é "{PALAVRA_ORIGINAL}"')
+    linha()
